@@ -9,8 +9,7 @@ from sqlalchemy import create_engine
 import psycopg2
 from dotenv import load_dotenv
 import os
-
-from test_auto_auth import COOKIE
+#
 
 load_dotenv()
 URL2 = os.getenv("URL2")
@@ -44,6 +43,7 @@ else:
 
 #Store the json data in a variable
 myjson = response.json()
+#print(myjson)
 ourdata =[]
 #create the csv column headers
 csvheader = ['created','message','recipient','status']

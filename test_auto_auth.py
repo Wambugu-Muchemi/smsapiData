@@ -32,4 +32,13 @@ headers = {
 
 response = requests.request("POST", url, headers=headers, data=payload)
 
-print(response.text)
+#print(response.text)
+
+acc_token = json.loads(response.text)
+acc_token2 = acc_token['data']
+acc_token3 = acc_token2['access_token']
+print("Bearer "+acc_token3)
+
+
+
+
