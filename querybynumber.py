@@ -27,6 +27,29 @@ message_dict = response.json()['data']
 message1 = message_dict[0]['message']
 message2 = message_dict[1]['message']
 message3 = message_dict[2]['message']
-print('\n1. '+message1)
-print('\n2. '+message2)
-print('\n3. '+message3)
+#print('\n1. '+message1)
+#print('\n2. '+message2)
+#print('\n3. '+message3)
+selection = input('Enter 1 for Sub ID or 2 for SMS code:')
+if selection == 1:
+    if 'subscription' in message1:
+        print(message1)
+    elif 'subscription' in message2:
+        print(message2)
+    elif 'subscription' in message3:
+        print(message3)
+    else:
+        print('No Sub ID message found. Please recheck number or reach out to your regional technical support for help.')
+      
+elif selection == 2:
+    if 'verification' in message1:
+        print(message1)
+    elif 'verification' in message2:
+        print(message2)
+    elif 'verification' in message3:
+        print(message3)
+    else:
+        print('No SMS code message found. Please recheck number or reach out to your regional technical support for help.')
+
+else:
+    print('Unknown selection.')
