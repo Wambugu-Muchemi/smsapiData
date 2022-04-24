@@ -23,5 +23,10 @@ response = requests.request("GET", url, headers=headers, data=payload)
 
 #print(response.text)
 message_dict = response.json()['data']
-message = message_dict[0]['message']
-print(message)
+#print(message_dict)
+message1 = message_dict[0]['message']
+message2 = message_dict[1]['message']
+message3 = message_dict[2]['message']
+print('\n1. '+message1)
+print('\n2. '+message2)
+print('\n3. '+message3)
