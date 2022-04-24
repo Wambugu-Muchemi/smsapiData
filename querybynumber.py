@@ -2,7 +2,7 @@ import requests
 import json
 import os
 
-phone = input("Enter #(711759446)")
+phone = input("Enter Number(e.g 701888666)")
 cleanedphone = f"%2B254{phone}"
 f"{cleanedphone}"
 with open('.bear', 'r') as f:
