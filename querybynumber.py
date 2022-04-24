@@ -9,7 +9,7 @@ with open('.bear', 'r') as f:
     accesstoken = f.read()
 url = f"https://account.africastalking.com/api/v1/apps/jndydujron/sms/bulk/outbox?filter=recipient&value={cleanedphone}&page=0&count=3"
 
-payload='from=6-10-2020'
+payload='from=1-1-2022'
 headers = {
   'Authorization': accesstoken,
   'X-Client-Id': 'nest.account.dashboard',
