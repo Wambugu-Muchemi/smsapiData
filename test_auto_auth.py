@@ -14,30 +14,39 @@ TOKEN2 = os.getenv("TOKEN2")
 CLIENT_ID = os.getenv("CLIENT_ID")
 USER_AGENT = os.getenv("USER_AGENT")
 
-url = URL
+def main():
+    url = URL
 
-payload = json.dumps({
-  "email": EMAIL,
-  "password": PASSWORD,
-  "timeOffset": 720
-})
-headers = {
-  'X-Client-Id': CLIENT_ID,
-  'User-Agent': USER_AGENT,
-  'Content-Type': 'application/json',
-  'Accept': '*/*',
-  'Authorization': TOKEN2,
-  'Cookie': COOKIE
-}
+    payload = json.dumps({
+    "email": EMAIL,
+    "password": PASSWORD,
+    "timeOffset": 720
+    })
+    headers = {
+    'X-Client-Id': CLIENT_ID,
+    'User-Agent': USER_AGENT,
+    'Content-Type': 'application/json',
+    'Accept': '*/*',
+    'Authorization': TOKEN2,
+    'Cookie': COOKIE
+    }
 
-response = requests.request("POST", url, headers=headers, data=payload)
+    response = requests.request("POST", url, headers=headers, data=payload)
 
-#print(response.text)
 
-acc_token = json.loads(response.text)
-acc_token2 = acc_token['data']
-acc_token3 = acc_token2['access_token']
-print("Bearer "+acc_token3)
+    accesstoken_dict = response.json()['data']
+
+
+    accesstoken = accesstoken_dict.get('access_token')
+    with open('.bear','w') as file:
+        file.writelines(f"Bearer {accesstoken}")
+        #print(accesstoken)
+    file.close()
+
+    return None
+
+if __name__ == "__main__":
+    main()
 
 
 
