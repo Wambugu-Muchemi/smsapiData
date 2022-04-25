@@ -24,7 +24,7 @@ response = requests.request("GET", url, headers=headers, data=payload)
 #print(response.text)
 message_dict = response.json()['data']
 if message_dict == []:
-    print('Unknown Number. Kindly use a registered number.')
+    print('No message history found. Recheck if this number is registered with us.')
 else:
     message1 = message_dict[0]['message']
     message2 = message_dict[1]['message']
