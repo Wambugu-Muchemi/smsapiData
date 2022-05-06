@@ -2,52 +2,55 @@ import requests
 import json
 from dotenv import load_dotenv
 import os
+import time
 
-load_dotenv()
+while(True):
 
-API_KEY = os.getenv("API_KEY")
-EMAIL = os.getenv("EMAIL")
-PASSWORD = os.getenv("PASSWORD")
-COOKIE = os.getenv("COOKIE")
-URL = os.getenv("URL")
-TOKEN2 = os.getenv("TOKEN2")
-CLIENT_ID = os.getenv("CLIENT_ID")
-USER_AGENT = os.getenv("USER_AGENT")
+    load_dotenv()
 
-def main():
-    url = URL
+    API_KEY = os.getenv("API_KEY")
+    EMAIL = os.getenv("EMAIL")
+    PASSWORD = os.getenv("PASSWORD")
+    COOKIE = os.getenv("COOKIE")
+    URL = os.getenv("URL")
+    TOKEN2 = os.getenv("TOKEN2")
+    CLIENT_ID = os.getenv("CLIENT_ID")
+    USER_AGENT = os.getenv("USER_AGENT")
 
-    payload = json.dumps({
-    "email": EMAIL,
-    "password": PASSWORD,
-    "timeOffset": 720
-    })
-    headers = {
-    'X-Client-Id': CLIENT_ID,
-    'User-Agent': USER_AGENT,
-    'Content-Type': 'application/json',
-    'Accept': '*/*',
-    'Authorization': TOKEN2,
-    'Cookie': COOKIE
-    }
+    def main():
+        url = URL
 
-    response = requests.request("POST", url, headers=headers, data=payload)
+        payload = json.dumps({
+        "email": EMAIL,
+        "password": PASSWORD,
+        "timeOffset": 720
+        })
+        headers = {
+        'X-Client-Id': CLIENT_ID,
+        'User-Agent': USER_AGENT,
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'Authorization': TOKEN2,
+        'Cookie': COOKIE
+        }
 
-
-    accesstoken_dict = response.json()['data']
-
-
-    accesstoken = accesstoken_dict.get('access_token')
-    with open('.bear','w') as file:
-        file.writelines(f"Bearer {accesstoken}")
-        #print(accesstoken)
-    file.close()
-
-    return None
-
-if __name__ == "__main__":
-    main()
+        response = requests.request("POST", url, headers=headers, data=payload)
 
 
+        accesstoken_dict = response.json()['data']
+
+
+        accesstoken = accesstoken_dict.get('access_token')
+        with open('.bear','w') as file:
+            file.writelines(f"Bearer {accesstoken}")
+            #print(accesstoken)
+        file.close()
+
+        return None
+
+    if __name__ == "__main__":
+        main()
+
+    time.sleep(300)
 
 

@@ -20,7 +20,9 @@ headers = {
 }
 
 response = requests.request("GET", url, headers=headers, data=payload)
-
+if response.status_code == 401:
+    print('API token issue encountered.')
+else: print("...")
 #print(response.text)
 message_dict = response.json()['data']
 if message_dict == []:
