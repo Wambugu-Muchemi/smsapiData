@@ -7,7 +7,7 @@ cleanedphone = f"%2B254{phone}"
 f"{cleanedphone}"
 with open('.bear', 'r') as f:
     accesstoken = f.read()
-url = f"https://account.africastalking.com/api/v1/apps/jndydujron/sms/bulk/outbox?filter=recipient&value={cleanedphone}&page=0&count=10"
+url = f"https://account.africastalking.com/api/v1/apps/jndydujron/sms/bulk/outbox?filter=recipient&value={cleanedphone}&page=0&count=1"
 
 payload='from=1-1-2022'
 headers = {
@@ -25,7 +25,21 @@ if response.status_code == 401:
 else: print("...")
 #print(response.text)
 message_dict = response.json()['data']
-if message_dict == []:
+code =message_dict[0]['message'][0:4]
+if int(code):
+    print(code)
+else:
+    print('Err')
+try:{
+    int(code)
+    
+}
+except:{
+    print('No sms found')
+
+}
+
+""" if message_dict == []:
     print('No message history found. Recheck if this number is registered with us.')
 else:
     message1 = message_dict[0]['message']
@@ -92,3 +106,4 @@ else:
             print('No SMS code message found. Please recheck number or reach out to your regional technical support for help.')
     else:
         print('Unknown selection.')
+ """
