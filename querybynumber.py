@@ -35,7 +35,7 @@ try:{
     
 }
 except:{
-    print('No sms found')
+    print('No code found. Recheck if this number is registered with us or try requesting another.')
 
 }
 
