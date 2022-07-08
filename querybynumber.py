@@ -5,6 +5,7 @@ import os
 phone = input("Enter Number(e.g 701888666)")
 cleanedphone = f"%2B254{phone}"
 f"{cleanedphone}"
+#we will read the populated access token from the hidden file .bear
 with open('.bear', 'r') as f:
     accesstoken = f.read()
 url = f"https://account.africastalking.com/api/v1/apps/jndydujron/sms/bulk/outbox?filter=recipient&value={cleanedphone}&page=0&count=1"
